@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CatsService } from './cats.service';
 
 @Controller()
@@ -6,8 +6,8 @@ export class CatsController {
   constructor(private readonly usecase: CatsService) {}
 
   @Post('/cats')
-  async execute() {
-    const result = await this.usecase.create({});
+  async execute(@Body() dto: any) {
+    const result = await this.usecase.create(dto);
 
     return result;
   }

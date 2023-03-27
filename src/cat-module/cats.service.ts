@@ -13,6 +13,6 @@ export class CatsService {
   }
 
   async findAll(): Promise<Cat[]> {
-    return this.catModel.find().select('breed');
+    return this.catModel.find().exec();
   }
 }
