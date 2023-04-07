@@ -1,21 +1,20 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { CatsService } from './cats.service';
-import { CatsDto } from './cats-dto';
+import { OwnerService } from './owner.service';
 import { ApiTags } from '@nestjs/swagger';
 
 @Controller()
-@ApiTags('cats')
-export class CatsController {
-  constructor(private readonly usecase: CatsService) {}
+@ApiTags('owner')
+export class OwnerController {
+  constructor(private readonly usecase: OwnerService) {}
 
-  @Post('/cats')
-  async execute(@Body() dto: CatsDto) {
+  @Post('/owner')
+  async execute(@Body() dto: any) {
     const result = await this.usecase.create(dto);
 
     return result;
   }
 
-  @Get('/cats')
+  @Get('/owner')
   async get() {
     const result = await this.usecase.findAll();
 
